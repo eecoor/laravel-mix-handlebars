@@ -11,10 +11,10 @@ mix.extend(
             return 'Handlebars';
         }
 
-        register(src, dist, variables = {}) {
+        register(src, dist, options = {}) {
             const HandlebarTask = require('./render');
             Mix.addTask(
-                new HandlebarTask({src, dist, variables})
+                new HandlebarTask({src, dist, options})
             )
         }
 
