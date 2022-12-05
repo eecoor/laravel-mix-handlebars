@@ -66,15 +66,14 @@ class HandlebarTask extends Task {
     }
 
     registerPartial() {
-        const partials = this.glob.sync('**/_*.hbs');
+        const partials = this.glob.sync('../layout/**/*.hbs');
         for (const file of partials) {
             try {
                 const parsed = path.parse(file);
-                parsed.name = parsed.name.substr(1);
                 const partialName =
                     parsed.dir === ""
                         ? parsed.name
-                        : parsed.dir + "/" + parsed.name;
+                        : parsed.dir.replace(/\.\.\/layout\//,'') + "/" + parsed.name;
 
                 if (! this.isHbsUpdate) {
                     Log.feedback(` - register partial ${file} as ${partialName}`);
