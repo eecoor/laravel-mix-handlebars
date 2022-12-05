@@ -7,7 +7,6 @@ let Log = require('laravel-mix/src/Log');
 class HandlebarTask extends Task {
 
     run() {
-        console.log("run::",this.data)
         this.isHbsUpdate = false;
         this.files = new FileCollection(this.data.src);
         this.precompile();
@@ -20,7 +19,6 @@ class HandlebarTask extends Task {
     }
 
     precompile() {
-        console.log("precompile::",this.data);
         const params = this.data;
 
         this.src = process.cwd() + '/' + params.src;
